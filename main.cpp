@@ -58,7 +58,6 @@ int main(int argc, char **argv)
             break;
         }
 
-        paramCallBack->currFrame = frame;
         makeBlur(frame, paramCallBack.get())
 
         cv::imshow(NAME_WIN, frame);
