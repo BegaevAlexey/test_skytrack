@@ -34,4 +34,6 @@ namespace utls
         return param;
     }
 
+    void callBackFunc(int event, int x, int y, int flags, void* userdata);
+
 } // namespace utls

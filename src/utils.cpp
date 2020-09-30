@@ -1,5 +1,8 @@
 #include "utils.h"
 
+#include <iostream>
+#include "paramcallback.h"
+
 libconfig::Config cfg;
 
 bool utls::initConfig(const std::string &nameFile)
@@ -20,4 +23,38 @@ bool utls::initConfig(const std::string &nameFile)
         return false;
     }
     return true;
+}
+
+void utls::callBackFunc(int event, int x, int y, int flags, void* userdata)
+{
+     if ( event != EVENT_MOUSEMOVE )
+     {
+         return;
+     }
+
+     call::ParamCallBack paramCallPack = (call::ParamCallBack*)userdata;
+
+     if ((paramCallPack->Xcurr != x) && (paramCallPack->Ycurr != y))
+     {
+        //cout << "[DEBUG] Mouse move over the window - position (" << x << ", " << y << ")" << endl;
+
+        // update coordinates
+        paramCallPack->Xcurr = x;
+        paramCallPack->Ycurr = y;
+
+        // calculation blur area
+        int w = paramCallPack->blurSize / 2;
+        int h = paramCallPack->blurSize / 2;
+        int xLeft = x - w / 2;
+        int yTop  = y - h / 2;
+        cv::Rect blurRect(xLeft, yTop, w, h);
+        cv::Mat blurArea = paramCallPack->frame(blurRect);
+
+        // make blur filter
+        cv::Size kSize(paramCallPack->kSize, paramCallPack->kSize);
+        cv::blur(blurArea, blurArea, kSize);
+     }
+     
+
+     
 }

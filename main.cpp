@@ -1,4 +1,6 @@
 #include <iostream>
+#include <memory>
+
 #include <opencv2/opencv.hpp>
 #include <libconfig.h++>
 
@@ -29,10 +31,21 @@ int main(int argc, char **argv)
 
     // calculate pause for waiting video
     int fps = cap.get(cv::CV_CAP_PROP_FPS);
-    int pause = 1000 / fps; 
+    int pause = 1000 / fps;
 
+    // create callback params
+    std::unique_ptr<call::ParamCallBack> paramCallBack = std::make_unique<call::ParamCallBack>();
+    int blurSize = utls::readCfgParam<std::string>("blur_size");
+    blurSize = blurSize > 0 ? blurSize : 1;
+    paramCallBack->blurSize = blurSize;
+    int kSize = utls::readCfgParam<std::string>("kernel_size");
+    kSize = kSize > 0 ? kSize : 1;
+    paramCallBack->kSize = kSize;
+
+    // set callback
     const std::string NAME_WIN = "SKYTRACK";
     cv::namedWindow(NAME_WIN, cv::WINDOW_NORMAL);
+    setMouseCallback(NAME_WIN, utils::callBackFunc, paramCallBack.get());
 
     cv::Mat frame;
     while (true)
@@ -44,6 +57,7 @@ int main(int argc, char **argv)
             break;
         }
 
+        paramCallBack->frame = frame;
 
         cv::imshow(NAME_WIN, frame);
         if (0 < cv::waitKey(pause))

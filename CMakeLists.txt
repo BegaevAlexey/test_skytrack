@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(HEADERS
         ${CMAKE_CURRENT_SOURCE_DIR}/src/utils.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/paramcallback.h
         )
 
 set(SOURCE
@@ -16,7 +17,7 @@ set(INCLUDE_DIR
         )
 
 set(LIBS
-        libconfig++
+        config++
         )
 
 add_executable(${PROJECT_NAME} main.cpp  ${SOURCE} ${HEADERS})
