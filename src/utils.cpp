@@ -1,7 +1,5 @@
 #include "utils.h"
 
-#include "paramcallback.h"
-
 libconfig::Config cfg;
 
 bool utls::initConfig(const std::string &nameFile)
@@ -35,11 +33,19 @@ void utls::callBackFunc(int event, int x, int y, int flags, void* userdata)
 
      if ((paramCallPack->Xcurr != x) && (paramCallPack->Ycurr != y))
      {
-        //cout << "[DEBUG] Mouse move over the window - position (" << x << ", " << y << ")" << endl;
+        //cout << "[DEBUG] Mouse move over the window - position (" << x << ", " << y << ")" << endl;        
+        paramCallPack->Xcurr     = x;
+        paramCallPack->Ycurr     = y;
+        paramCallPack->isUpdated = true;        
+     }     
+}
 
-        // update coordinates
-        paramCallPack->Xcurr = x;
-        paramCallPack->Ycurr = y;
+void utls::makeBlur(cv::Mat &frame, call::ParamCallBack* paramCallBack)
+{
+    if(paramCallPack->isUpdated)
+    {
+        int x = paramCallPack->Xcurr;
+        int y = paramCallPack->Ycurr;
 
         // calculation blur area
         int w = paramCallPack->blurSize;
@@ -49,14 +55,15 @@ void utls::callBackFunc(int event, int x, int y, int flags, void* userdata)
         int yTop  = y - h / 2;
         yTop = yTop < 0 ? yTop : 0;
         int xLeftWidth = xLeft + w;
-        xLeftWidth = xLeftWidth >  paramCallPack->currFrame.cols ? paramCallPack->currFrame.cols - xLeft - 1 : xLeftWidth;
+        xLeftWidth = xLeftWidth >  frame.cols ? frame.cols - xLeft - 1 : xLeftWidth;
         int yTopHeight = yTop + h;
-        yTopHeight = yTopHeight >  paramCallPack->currFrame.rows ? paramCallPack->currFrame.rows - yTop - 1 : yTopHeight;
+        yTopHeight = yTopHeight >  frame.rows ? frame.rows - yTop - 1 : yTopHeight;
         cv::Rect blurRect(xLeft, yTop, xLeftWidth, yTopHeight);
-        cv::Mat blurArea = paramCallPack->currFrame(blurRect);
 
         // make blur filter
         cv::Size kSize(paramCallPack->kSize, paramCallPack->kSize);
-        cv::GaussianBlur(blurArea, blurArea, kSize, 0, 0 );
-     }     
+        cv::GaussianBlur(frame(blurRect), frame(blurRect), kSize, 0, 0 );
+
+        paramCallPack->isUpdated = false;
+    }
 }

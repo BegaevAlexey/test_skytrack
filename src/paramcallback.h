@@ -11,15 +11,17 @@ namespace call
     {
         int     Xcurr;     ///< current x coordinate
         int     Ycurr;     ///< current y coordinate
-        cv::Mat currFrame; ///< current frame
+        //cv::Mat currFrame; ///< current frame
         int     blurSize;  ///< area size for blur effect
         int     kSize;     ///< size of blur kernel
+        bool    isUpdated; ///< true - data was updated 
     
         ParamCallBack()
         : Xcurr(-1)
         , Ycurr(-1)
         , blurSize(1)
         , kSize(1)
+        , isUpdated(false)
         {
 
         }
