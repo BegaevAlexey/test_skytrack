@@ -1,3 +1,4 @@
+#include <iostream>
 #include <libconfig.h++>
 #include <string>
 
@@ -25,7 +26,7 @@ namespace utls
         T param;
         if (cfg.lookupValue(nameParam, param))
         {
-            std::cout << "[INFO] nameParam: " << param << std::endl;
+            std::cout << "[INFO]" << nameParam  << ": " << param << std::endl;
         } 
         else
         {

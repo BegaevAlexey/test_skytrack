@@ -1,6 +1,5 @@
 #include "utils.h"
 
-#include <iostream>
 #include "paramcallback.h"
 
 libconfig::Config cfg;
