@@ -5,6 +5,7 @@
 #include <libconfig.h++>
 
 #include "utils.h"
+#include "paramcallback.h"
 
 int main(int argc, char **argv)
 {
