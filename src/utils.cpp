@@ -42,18 +42,21 @@ void utls::callBackFunc(int event, int x, int y, int flags, void* userdata)
         paramCallPack->Ycurr = y;
 
         // calculation blur area
-        int w = paramCallPack->blurSize / 2;
-        int h = paramCallPack->blurSize / 2;
+        int w = paramCallPack->blurSize;
+        int h = paramCallPack->blurSize;
         int xLeft = x - w / 2;
+        xLeft = xLeft < 0 ? xLeft : 0;
         int yTop  = y - h / 2;
-        cv::Rect blurRect(xLeft, yTop, w, h);
+        yTop = yTop < 0 ? yTop : 0;
+        int xLeftWidth = xLeft + w;
+        xLeftWidth = xLeftWidth >  paramCallPack->currFrame.cols ? paramCallPack->currFrame.cols - xLeft - 1 : xLeftWidth;
+        int yTopHeight = yTop + h;
+        yTopHeight = yTopHeight >  paramCallPack->currFrame.rows ? paramCallPack->currFrame.rows - yTop - 1 : yTopHeight;
+        cv::Rect blurRect(xLeft, yTop, xLeftWidth, yTopHeight);
         cv::Mat blurArea = paramCallPack->currFrame(blurRect);
 
         // make blur filter
         cv::Size kSize(paramCallPack->kSize, paramCallPack->kSize);
-        cv::blur(blurArea, blurArea, kSize);
-     }
-     
-
-     
+        cv::GaussianBlur(blurArea, blurArea, kSize, 0, 0 );
+     }     
 }
