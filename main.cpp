@@ -58,7 +58,7 @@ int main(int argc, char **argv)
             break;
         }
 
-        utls::makeBlur(frame, paramCallBack.get())
+        utls::makeBlur(frame, paramCallBack.get());
 
         cv::imshow(NAME_WIN, frame);
         if (0 < cv::waitKey(pause))
