@@ -15,7 +15,7 @@ namespace call
         int     blurSize;  ///< area size for blur effect
         int     kSize;     ///< size of blur kernel
     
-        ParamCallBack::ParamCallBack()
+        ParamCallBack()
         : Xcurr(-1)
         , Ycurr(-1)
         , blurSize(1)
