@@ -54,8 +54,8 @@ void utls::makeBlur(cv::Mat &frame, call::ParamCallBack* paramCallBack)
         xLeft = (xLeft < 0) ? xLeft : 0;
         int yTop  = y - h / 2;
         yTop = (yTop < 0) ? yTop : 0;
-        w = (xLeft + w) > frame.cols ? frame.cols - xLeft - 1 : w;
-        h = (yTop + h) > frame.rows ? frame.rows - yTop - 1 : h;
+        w = (xLeft + w) < frame.cols ? w : frame.cols - xLeft - 1;
+        h = (yTop + h) < frame.rows ? h : frame.rows - yTop - 1 ;
         yTopHeight = yTopHeight >  frame.rows ? frame.rows - yTop - 1 : yTopHeight;
         cv::Rect blurRect(xLeft, yTop, w, h);
 
