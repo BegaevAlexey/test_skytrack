@@ -10,12 +10,12 @@ bool utls::initConfig(const std::string &nameFile)
     {
         cfg.readFile(nameFile.c_str());
     }
-    catch(const FileIOException &fioex)
+    catch(const libconfig::FileIOException &fioex)
     {
         std::cerr << "[ERROR] I/O error while reading file." << std::endl;
         return false;
     }
-    catch(const ParseException &pex)
+    catch(const libconfig::ParseException &pex)
     {
         std::cerr << "[ERROR] Parse error at " << pex.getFile() << ":" << pex.getLine()
                   << " - " << pex.getError() << std::endl;
