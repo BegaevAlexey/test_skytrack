@@ -48,7 +48,7 @@ void utls::callBackFunc(int event, int x, int y, int flags, void* userdata)
         int xLeft = x - w / 2;
         int yTop  = y - h / 2;
         cv::Rect blurRect(xLeft, yTop, w, h);
-        cv::Mat blurArea = paramCallPack->frame(blurRect);
+        cv::Mat blurArea = paramCallPack->currFrame(blurRect);
 
         // make blur filter
         cv::Size kSize(paramCallPack->kSize, paramCallPack->kSize);

@@ -7,7 +7,7 @@ namespace call
      * @date 30.09.2020
      * @author BegaevAlexey
      */
-    class ParamCallBack
+    struct ParamCallBack
     {
         int     Xcurr;     ///< current x coordinate
         int     Ycurr;     ///< current y coordinate

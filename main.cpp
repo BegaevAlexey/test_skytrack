@@ -58,7 +58,7 @@ int main(int argc, char **argv)
             break;
         }
 
-        paramCallBack->frame = frame;
+        paramCallBack->currFrame = frame;
 
         cv::imshow(NAME_WIN, frame);
         if (0 < cv::waitKey(pause))
