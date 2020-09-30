@@ -8,7 +8,7 @@ bool utls::initConfig(const std::string &nameFile)
 {
     try
     {
-        cfg.readFile(nameFile);
+        cfg.readFile(nameFile.c_str());
     }
     catch(const FileIOException &fioex)
     {
