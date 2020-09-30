@@ -18,7 +18,8 @@ namespace utls
      * @date 30.09.2020
      * @author BegaevAlexey
      * @param nameParam[in] Name param
-     */ 
+     */
+    template<typename T>
     T readCfgParam(const std::string &nameParam)
     {
         T param;

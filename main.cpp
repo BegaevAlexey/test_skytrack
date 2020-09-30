@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     }
 
     // calculate pause for waiting video
-    int fps = cap.get(cv::CV_CAP_PROP_FPS);
+    int fps = cap.get(cv::CAP_PROP_FPS);
     int pause = 1000 / fps;
 
     // create callback params
