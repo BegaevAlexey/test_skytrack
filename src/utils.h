@@ -42,20 +42,11 @@ namespace utls
     }
 
     /*!
-     * @brief Read param from config file
+     * @brief Callback function for mause event
      * @date 30.09.2020
      * @author BegaevAlexey
      */
     void callBackFunc(int event, int x, int y, int flags, void* userdata);
-
-    /*!
-     * @brief Read param from config file
-     * @date 30.09.2020
-     * @author BegaevAlexey
-     * @param frame[in, out] Current frame
-     * @param paramCallBack[in, out] Params for making blur
-     */
-    void makeBlur(cv::Mat &frame, call::ParamCallBack* paramCallBack);
 
 } // namespace utls
 

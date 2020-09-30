@@ -34,14 +34,10 @@ int main(int argc, char **argv)
     int fps = cap.get(cv::CAP_PROP_FPS);
     int pause = 1000 / fps;
 
-    // create callback params
-    std::unique_ptr<call::ParamCallBack> paramCallBack = std::make_unique<call::ParamCallBack>();
+    // create callback params    
     int blurSize = utls::readCfgParam<int>("blur_size");
-    blurSize = blurSize > 0 ? blurSize : 1;
-    paramCallBack->blurSize = blurSize;
     int kSize = utls::readCfgParam<int>("kernel_size");
-    kSize = kSize > 0 ? kSize : 1;
-    paramCallBack->kSize = kSize;
+    std::unique_ptr<call::ParamCallBack> paramCallBack = std::make_unique<call::ParamCallBack>(blurSize, kSize);
 
     // set callback
     const std::string NAME_WIN = "SKYTRACK";
@@ -58,7 +54,7 @@ int main(int argc, char **argv)
             break;
         }
 
-        utls::makeBlur(frame, paramCallBack.get());
+        paramCallBack->makeBlur(frame);
 
         cv::imshow(NAME_WIN, frame);
         if (0 < cv::waitKey(pause))

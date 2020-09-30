@@ -10,24 +10,33 @@ namespace call
      * @date 30.09.2020
      * @author BegaevAlexey
      */
-    struct ParamCallBack
-    {
-        int     Xcurr;     ///< current x coordinate
-        int     Ycurr;     ///< current y coordinate
-        //cv::Mat currFrame; ///< current frame
-        int     blurSize;  ///< area size for blur effect
-        int     kSize;     ///< size of blur kernel
-        bool    isUpdated; ///< true - data was updated 
-    
-        ParamCallBack()
-        : Xcurr(-1)
-        , Ycurr(-1)
-        , blurSize(1)
-        , kSize(1)
-        , isUpdated(false)
-        {
+    class ParamCallBack
+    {   
+    public:
+        /*!
+         * @brief Structure for containing params for callback function
+         * @param blurSize[in] Size of blur area
+         * @param kernelSize[in] Kernel size for blur effect
+         */
+        ParamCallBack(int blurSize, int kernelSize);
 
-        }
+        /*!
+         * @brief Make blur effict for current frame
+         * @param frame[in, out] Current frame
+         */
+        void makeBlur(cv::Mat &frame);
+
+        void setPoint(const cv::Point &p);
+
+        cv::Point getPoint() const;        
+
+    private:
+        cv::Point m_currPoint; ///< current cursor coordinates        
+        int       m_blurSize;  ///< area size for blur effect
+        int       m_kSize;     ///< size of blur kernel
+        bool      m_isUpdated; ///< true - data was updated 
+    
+        
     };
 } // namespace call
 

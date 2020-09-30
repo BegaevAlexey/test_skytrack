@@ -12,6 +12,7 @@ set(HEADERS
 
 set(SOURCE
         ${CMAKE_CURRENT_SOURCE_DIR}/src/utils.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/paramcallback.cpp
         )
 
 set(INCLUDE_DIR
