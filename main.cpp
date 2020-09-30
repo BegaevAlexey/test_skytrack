@@ -36,10 +36,10 @@ int main(int argc, char **argv)
 
     // create callback params
     std::unique_ptr<call::ParamCallBack> paramCallBack = std::make_unique<call::ParamCallBack>();
-    int blurSize = utls::readCfgParam<std::string>("blur_size");
+    int blurSize = utls::readCfgParam<int>("blur_size");
     blurSize = blurSize > 0 ? blurSize : 1;
     paramCallBack->blurSize = blurSize;
-    int kSize = utls::readCfgParam<std::string>("kernel_size");
+    int kSize = utls::readCfgParam<int>("kernel_size");
     kSize = kSize > 0 ? kSize : 1;
     paramCallBack->kSize = kSize;
 
