@@ -1,3 +1,6 @@
+#ifndef TEST_SKYTRACK_UTILS_H
+#define TEST_SKYTRACK_UTILS_H
+
 #include <iostream>
 #include <libconfig.h++>
 #include <string>
@@ -55,3 +58,5 @@ namespace utls
     void makeBlur(cv::Mat &frame, call::ParamCallBack* paramCallBack);
 
 } // namespace utls
+
+#endif // TEST_SKYTRACK_UTILS_H

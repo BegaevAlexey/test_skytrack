@@ -1,3 +1,6 @@
+#ifndef TEST_SKYTRACK_PARAMCALLBACK_H
+#define TEST_SKYTRACK_PARAMCALLBACK_H
+
 #include <opencv2/opencv.hpp>
 
 namespace call
@@ -27,3 +30,5 @@ namespace call
         }
     };
 } // namespace call
+
+#endif // TEST_SKYTRACK_PARAMCALLBACK_H
