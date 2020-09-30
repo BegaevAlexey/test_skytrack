@@ -44,8 +44,8 @@ void utls::makeBlur(cv::Mat &frame, call::ParamCallBack* paramCallBack)
 {
     if(paramCallBack->isUpdated)
     {
-        int x = paramCallPack->Xcurr;
-        int y = paramCallPack->Ycurr;
+        int x = paramCallBack->Xcurr;
+        int y = paramCallBack->Ycurr;
 
         // calculation blur area
         int w = paramCallBack->blurSize;
