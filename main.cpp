@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     while (true)
     {
         cap >> frame;
-        if(frame.isEmpty())
+        if(frame.empty())
         {
             std::cout << "[INFO] Frame is empty!" << std::endl;
             break;

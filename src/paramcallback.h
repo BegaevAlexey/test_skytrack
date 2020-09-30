@@ -12,7 +12,8 @@ namespace call
         int     Xcurr;     ///< current x coordinate
         int     Ycurr;     ///< current y coordinate
         cv::Mat currFrame; ///< current frame
-        int     blurSize;  ///< Area size for blur effect
+        int     blurSize;  ///< area size for blur effect
+        int     kSize;     ///< size of blur kernel
     
         ParamCallBack::ParamCallBack()
         : Xcurr(-1)
