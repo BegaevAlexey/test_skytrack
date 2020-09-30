@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     // set callback
     const std::string NAME_WIN = "SKYTRACK";
     cv::namedWindow(NAME_WIN, cv::WINDOW_NORMAL);
-    setMouseCallback(NAME_WIN, utls::callBackFunc, paramCallBack.get());
+    cv::setMouseCallback(NAME_WIN, utls::callBackFunc, paramCallBack.get());
 
     cv::Mat frame;
     while (true)
