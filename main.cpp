@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     bool isRead = utls::initConfig(argv[1]);
     if(!isRead)
     {
-        retrun -1;
+        return -1;
     }
 
     // open video
@@ -69,4 +69,5 @@ int main(int argc, char **argv)
     cv::destroyAllWindows();
 
     std::cout << "\n\t***END PROGRAM!***" << std::endl;
+    return 0;
 }
