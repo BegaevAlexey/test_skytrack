@@ -26,7 +26,7 @@ bool utls::initConfig(const std::string &nameFile)
 
 void utls::callBackFunc(int event, int x, int y, int flags, void* userdata)
 {
-     if ( event != EVENT_MOUSEMOVE )
+     if ( event != cv::EVENT_MOUSEMOVE )
      {
          return;
      }
