@@ -18,7 +18,7 @@ namespace call
         : Xcurr(-1)
         , Ycurr(-1)
         , blurSize(1)
-        , kSize(1);
+        , kSize(1)
         {
 
         }
