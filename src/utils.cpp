@@ -32,7 +32,7 @@ void utls::callBackFunc(int event, int x, int y, int flags, void* userdata)
          return;
      }
 
-     call::ParamCallBack paramCallPack = (call::ParamCallBack*)userdata;
+     call::ParamCallBack *paramCallPack = (call::ParamCallBack*)userdata;
 
      if ((paramCallPack->Xcurr != x) && (paramCallPack->Ycurr != y))
      {
