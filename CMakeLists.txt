@@ -4,9 +4,11 @@ project(test_skytrack)
 set(CMAKE_CXX_STANDARD 17)
 
 set(HEADERS
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/utils.h
         )
 
 set(SOURCE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/utils.cpp
         )
 
 set(INCLUDE_DIR
@@ -14,6 +16,7 @@ set(INCLUDE_DIR
         )
 
 set(LIBS
+        libconfig++
         )
 
 add_executable(${PROJECT_NAME} main.cpp  ${SOURCE} ${HEADERS})
